@@ -1,0 +1,28 @@
+using System;
+using System.Globalization;
+
+class Program {
+  public static void Main (string[] args) {
+  string[] vet = Console.ReadLine().Split(' ');
+  int lanche = int.Parse(vet[0]);
+  int unidade = int.Parse(vet[1]);
+
+  double valor = lanche * unidade;
+
+    if (lanche == 1){
+      Console.WriteLine("Total: R$ " + (unidade * 4.00).ToString("F2", CultureInfo.InvariantCulture));
+    }
+    else if (lanche == 2){      
+      Console.WriteLine("Total: R$ " + (unidade * 4.50).ToString("F2", CultureInfo.InvariantCulture));
+    }
+    else if (lanche == 3){
+      Console.WriteLine("Total: R$ " + (unidade * 5.00).ToString("F2", CultureInfo.InvariantCulture));
+    }
+    else if (lanche == 4){
+      Console.WriteLine("Total: R$ " + (unidade * 2.00).ToString("F2", CultureInfo.InvariantCulture));
+    }
+    else if (lanche == 5){
+    Console.WriteLine("Total: R$ " + (unidade * 1.50).ToString("F2", CultureInfo.InvariantCulture));
+    }
+  }
+}
