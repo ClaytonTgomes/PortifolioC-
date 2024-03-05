@@ -1,0 +1,24 @@
+using System ;
+
+public static class Program 
+{         
+    public static void Main()
+    {
+            Console.Write("Digite a temperatura: ");
+            int t = int.Parse(Console.ReadLine());
+			
+			Console.WriteLine();
+			
+			if (t < 0){
+                Console.WriteLine("Sólido");
+            }else if (t == 0) {
+                Console.WriteLine("Ponto de fusão");
+            }else if (t > 0 && t < 100){
+                Console.WriteLine("Líquido");
+            }else if (t == 100){
+                Console.WriteLine("Ponto de Ebulição");
+            }else{
+                Console.WriteLine("Gasoso");
+            }
+    }
+}
