@@ -1,0 +1,26 @@
+using System ;
+
+public static class Program 
+{         
+    public static void Main()
+    {
+            Console.WriteLine("Digite 3 números para eu saber quem é o maior");
+            int a = int.Parse(Console.ReadLine());
+			int b = int.Parse(Console.ReadLine());
+			int c = int.Parse(Console.ReadLine());
+			
+			Console.WriteLine();
+			
+			if (a > b){
+                    if (a > c){
+                        Console.WriteLine(a + " é o Maior");
+                    }else{
+                        Console.WriteLine(c + " é o Maior");
+                    }
+            }else if (b > c){
+                Console.WriteLine(b + " é o Maior");
+            }else{
+                Console.WriteLine(c + " é o Maior");
+            }
+    }
+}
