@@ -1,0 +1,25 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Cadastre uma senha!");
+		string senha = Console.ReadLine();
+		
+		Console.WriteLine("Senha confirmada com sucesso");
+		
+		string confirma = "";
+		
+		while (confirma != senha)
+		{
+            Console.WriteLine("Confirme sua senha");
+			confirma = Console.ReadLine();
+			if(confirma == senha){
+                Console.WriteLine("Senha confirmada");
+            }else{
+                Console.WriteLine("Senhas não conferem");
+			}
+		}
+   }
+}
