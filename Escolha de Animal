@@ -1,0 +1,103 @@
+using System;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Digite se quer Invertebrado ou Vertebrado?");
+
+        string A1 = Console.ReadLine();
+
+        if (A1 == "vertebrado" || A1 == "Vertebrado")
+        {
+            Console.WriteLine("Ave ou Mamifero?");
+            string A2 = Console.ReadLine();
+
+            if (A2 == "Ave" || A2 == "ave")
+            {
+                Console.WriteLine("Carnivoro ou Onivoro?");
+                string A3 = Console.ReadLine();
+                if (A3 == "Carnivoro" || A3 == "carnivoro")
+                {
+                    Console.WriteLine("Você escolheu Aguia");
+                }
+                else if (A3 == "Onivoro" || A3 == "onivoro")
+                {
+                    Console.WriteLine("Você escolheu Pomba");
+                }
+                else
+                {
+                    Console.WriteLine("Não é desta estrutura");
+                }
+            }
+            else if(A2 == "mamifero" || A2 == "Mamifero"){
+                Console.WriteLine("onivoro ou Herbivoro?");
+                string A3 = Console.ReadLine();
+                if (A3 == "Onivoro" || A3 == "onivoro")
+                {
+                    Console.WriteLine("Você escolheu Homem");
+                }
+                else if (A3 == "Herbivoro" || A3 == "herbivoro")
+                {
+                    Console.WriteLine("Você escolheu Vaca");
+                }
+                else
+                {
+                    Console.WriteLine("Não é desta estrutura");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Não é desta estrutura");
+            }
+        }
+        else if (A1 == "invertebrado" || A1 == "Invertebrado")
+        {
+            Console.WriteLine("Inseto ou Anelidio?");
+            string A2 = Console.ReadLine();
+
+            if (A2 == "inseto" || A2 == "Inseto")
+            {
+                Console.WriteLine("Hematofago ou Herbivoro?");
+                string A3 = Console.ReadLine();
+                if (A3 == "hematofago" || A3 == "Hematofago")
+                {
+                    Console.WriteLine("Você escolheu Pulga");
+                }
+                else if (A3 == "Herbivoro" || A3 == "herbivoro")
+                {
+                    Console.WriteLine("Você escolheu Lagarta");
+                }
+                else
+                {
+                    Console.WriteLine("Não é desta estrutura");
+                }
+            }
+            else if (A2 == "Anelidio" || A2 == "anelidio")
+            {
+                Console.WriteLine("Hematofago ou Onivoro?");
+                string A3 = Console.ReadLine();
+                if (A3 == "hematofago" || A3 == "Hematofago")
+                {
+                    Console.WriteLine("Você escolheu Sanguessuga");
+                }
+                else if (A3 == "Onivoro" || A3 == "onivoro")
+                {
+                    Console.WriteLine("Você escolheu Minhoca");
+                }
+                else
+                {
+                    Console.WriteLine("Não é desta estrutura");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Não é desta estrutura");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Não é desta estrutura");
+        }
+    }
+}
