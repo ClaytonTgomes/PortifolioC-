@@ -1,0 +1,18 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.Write("Digite um valor da Tabuada: ");
+
+        int valor = int.Parse(Console.ReadLine());
+
+        for (int i = 1; i <= 10; i++)
+        {
+            int resultado = valor * i;
+            Console.WriteLine(valor + " x " + i + " = " + resultado);
+
+        }
+    }
+}
