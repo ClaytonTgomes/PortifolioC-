@@ -1,0 +1,22 @@
+using System;
+
+public class Program
+{
+    static void Main()
+    {
+        Console.Write("Digite um valor de sequencia de casas a aparecer do calculo do Fibonacci: ");
+        int n = int.Parse(Console.ReadLine());
+        int a = 0;
+        int b = 1;
+
+        Console.WriteLine("Sequência de Fibonacci:");
+
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write(a + " ");
+            int temp = a;
+            a = b;
+            b = temp + b;
+        }
+    }
+}
