@@ -1,0 +1,17 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Digite um numero para sabe se é divisível por 4");
+		
+		int n = int.Parse(Console.ReadLine());
+		
+		while(n % 4 != 0){
+            Console.WriteLine(n + " nao é divisivel por 4");
+			n = int.Parse(Console.ReadLine());
+        }
+		Console.WriteLine(n + " é divisivel por 4");
+    }
+}
