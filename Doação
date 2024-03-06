@@ -1,0 +1,47 @@
+using System;
+using CSharpShellCore;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Digite sua idade para verificação de Doação");
+		
+		int idade = int.Parse(Console.ReadLine());
+		
+		if (idade >= 18 && idade < 69)
+		{
+            Console.WriteLine("Qual o seu peso?");
+			float peso = float.Parse(Console.ReadLine());
+			if (peso >= 50)
+			{
+                Console.WriteLine("O candidato apresentou Sintomas de Gripe, resfriado ou febre nos últimos 7 dias?");
+				string gripe = Console.ReadLine();
+				if (gripe == "Sim" || gripe == "sim")
+				{
+                    Console.WriteLine("O candidato tomou algum tipo de vacina nos últimos 7 dias?");
+					string vacina = Console.ReadLine();
+					if (vacina == "Sim" || vacina == "sim")
+					{
+                          Console.WriteLine("apto com restrição (aguardar 15 dias)");
+                    }
+					else{
+                            Console.WriteLine("Apto");
+					}
+                }
+				else
+				{
+                    Console.WriteLine("Apto");
+                }
+            }
+			else
+			{
+                Console.WriteLine("Inapto");
+            }
+		}
+		else
+		{
+                Console.WriteLine("Inapto");
+        }
+	}
+}
