@@ -1,0 +1,52 @@
+using System;
+
+class Program {
+  public static void Main () {
+    Console.WriteLine ("Digite as Notas do Ano Letivo");
+
+    Console.Write("Digite a nota do primeiro Bimestre: ");
+    float a = float.Parse(Console.ReadLine());
+    while(a <= 0 || a > 10){
+      Console.WriteLine("Nota inválida");
+      Console.WriteLine("Digite novamente a nota do primeiro Bimestre: ");
+      a = float.Parse(Console.ReadLine());
+    }
+
+    Console.Write("Digite a nota do Segundo Bimestre: ");
+    float b = float.Parse(Console.ReadLine());
+    while(b <= 0 || b > 10){
+      Console.WriteLine("Nota inválida");
+      Console.WriteLine("Digite novamente a nota do Segundo Bimestre: ");
+      b = float.Parse(Console.ReadLine());
+    }
+
+    Console.Write("Digite a nota do Terceiro Bimestre: ");
+    float c = float.Parse(Console.ReadLine());
+    while(c <= 0 || c > 10){
+      Console.WriteLine("Nota inválida");
+      Console.WriteLine("Digite novamente a nota do terceiro Bimestre: ");
+      c = float.Parse(Console.ReadLine());
+    }
+
+    Console.Write("Digite a nota do Quarto Bimestre: ");
+    float d = float.Parse(Console.ReadLine());
+    while(0 > d || d > 10){
+      Console.WriteLine("Nota inválida");
+      Console.WriteLine("Digite novamente a nota do quarto Bimestre: ");
+      d = float.Parse(Console.ReadLine());
+    }
+
+    float media = (a + b + c + d) / 4;
+    if (media < 4){
+      Console.WriteLine("A média é: " + Math.Round(media, 2));
+      Console.WriteLine("Você está reprovado");
+    }else if (media > 4 && media < 7){
+      Console.WriteLine("A média é: " + Math.Round(media, 2));
+      Console.WriteLine("Você está de recuperação");
+    }else if(media >= 7){
+      Console.WriteLine("A média é: " + Math.Round(media, 2));
+      Console.WriteLine("Você está aprovado");
+    }
+
+  }
+}
