@@ -1,0 +1,26 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Tente adivinhar uma letra");
+		
+		char n = char.Parse(Console.ReadLine());
+		int a = 3;
+		int b = 0;
+		while(b < a){
+            if (n == 's' || n == 'S')
+			{
+                Console.WriteLine("Parabéns você acertou!!");
+				break;
+            }
+			else {
+                    Console.WriteLine("Você errou, tente novamente.");
+					n = char.Parse(Console.ReadLine());
+			}
+			b++;
+        }
+		Console.WriteLine("Game over!!");
+    }
+}
