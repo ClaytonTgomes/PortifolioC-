@@ -5,13 +5,13 @@ class Program
     static void Main(string[] args)
     {
         // Inicializar um array para armazenar os números digitados pelo usuário
-        int[] numeros = new int[6];
+        int[] numeros = new int[10];
 
-        // Solicitar ao usuário que digite 6 números inteiros positivos
-        Console.WriteLine("Digite 6 números inteiros positivos:");
+        // Solicitar ao usuário que digite 10 números inteiros positivos
+        Console.WriteLine("Digite 10 números inteiros positivos:");
 
         // Loop para solicitar os números e armazená-los no array
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 10; i++)
         {
             do
             {
