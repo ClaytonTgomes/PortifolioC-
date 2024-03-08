@@ -4,35 +4,15 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Inicializar um array para armazenar os números digitados pelo usuário
-        int[] numeros = new int[6];
-
-        // Solicitar ao usuário que digite 6 números inteiros positivos
-        Console.WriteLine("Digite 6 números inteiros positivos:");
-
-        // Loop para solicitar os números e armazená-los no array
-        for (int i = 0; i < 6; i++)
-        {
-            do
-            {
-                Console.Write("Número " + (i + 1) + ": ");
-                numeros[i] = int.Parse(Console.ReadLine());
-
-                // Verificar se o número digitado é positivo
-                if (numeros[i] <= 0)
-                {
-                    Console.WriteLine("Por favor, digite um número inteiro positivo.");
-                }
-            } while (numeros[i] <= 0); // Repetir até que um número positivo seja digitado
-        }
-
-        // Exibir apenas os números pares
-        Console.WriteLine("\nNúmeros pares digitados:");
-        for (int i = 0; i < 6; i++)
-        {
-            if (numeros[i] % 2 == 0)
-            {
-                Console.WriteLine(numeros[i]);
+		Console.WriteLine("Digite 4 numeros");
+		
+		for (int i = 0;i < 6;i++){
+            Console.Write("Digite o numero " + (i + 1) + ": ");
+            int numero = int.Parse(Console.ReadLine());
+			if (numero % 2 == 0){
+                Console.WriteLine();
+				Console.WriteLine(numero + " é par");
+				Console.WriteLine();
             }
         }
     }
