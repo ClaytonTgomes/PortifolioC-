@@ -28,7 +28,7 @@ class Program
 
         // Exibir apenas os números pares
         Console.WriteLine("\nNúmeros impares digitados:");
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 10; i++)
         {
             if (numeros[i] % 2 != 0)
             {
