@@ -1,0 +1,33 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+		int[] numero = new int[6];
+		
+		string[] vet = Console.ReadLine().Split(' ');
+		numero[0] = int.Parse(vet[0]);
+		numero[1] = int.Parse(vet[1]);
+		numero[2] = int.Parse(vet[2]);
+		numero[3] = int.Parse(vet[3]);
+		numero[4] = int.Parse(vet[4]);
+		numero[5] = int.Parse(vet[5]);
+		
+		Console.WriteLine();
+		Console.Write("[" + numero[0] + ",");
+		Console.Write(numero[1] + ",");
+		Console.Write(numero[2] + ",");
+		Console.Write(numero[3] + ",");
+		Console.Write(numero[4] + ",");
+		Console.Write(numero[5] + "]");
+		
+		Console.WriteLine();
+		Console.Write("[" + numero[5] + ",");
+		Console.Write(numero[4] + ",");
+		Console.Write(numero[3] + ",");
+		Console.Write(numero[2] + ",");
+		Console.Write(numero[1] + ",");
+		Console.Write(numero[0] + "]");
+	}
+}
