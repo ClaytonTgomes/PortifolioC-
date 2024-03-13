@@ -1,0 +1,44 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+		int seq = int.Parse(Console.ReadLine());
+		Console.WriteLine();
+		
+		int[] num = new int[seq];
+		
+		for(int i = 0;i<seq;i++){
+            
+            num[i] = int.Parse(Console.ReadLine());
+        }
+		
+		Console.WriteLine();
+		
+		Console.Write("Pares [");
+		bool primeiroPar = true;
+		for(int x = 0;x < seq;x++){
+            if(num[x] % 2 == 0){
+                    if(!primeiroPar){
+                        Console.Write(",");
+                    }
+                    Console.Write(num[x]);
+				    primeiroPar = false;
+			}
+		}
+		Console.WriteLine("]");
+		Console.Write("Impares [");
+		bool primeiroImpar = true;
+		for(int y = 0;y < seq;y++){
+            if(num[y] % 2 != 0){
+                    if(!primeiroImpar){
+                        Console.Write(",");
+                    }
+                    Console.Write(num[y]);
+					primeiroImpar = false;
+			}
+		}
+		Console.Write("]");
+	}
+}
