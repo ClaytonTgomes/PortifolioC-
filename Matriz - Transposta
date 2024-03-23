@@ -1,0 +1,33 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int[,] m = new int[,] { { 1, 5, 9}, {2, 6, 10}, { 3, 7, 11 },  { 4, 8, 12} };
+
+        int i;
+        int j;
+
+        Console.WriteLine("Matriz Normal");
+        for (i = 0; i < 4; i++)
+        {
+            for(j = 0; j < 3; j++)
+            {
+                Console.Write(m[i,j]+ "\t");
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine();
+
+        Console.WriteLine("Matriz Transposta");
+        for (j = 0; j < 3; j++)
+        {
+            for (i = 0; i < 4; i++)
+            {
+                Console.Write(m[i, j] + "\t");
+            }
+            Console.WriteLine();
+        }
+    }
+}
