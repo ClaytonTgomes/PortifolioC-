@@ -1,0 +1,223 @@
+using System;
+using System.Linq;
+
+namespace BlackJack;
+
+public static class Program
+{
+	public static void Main()
+	{
+         string nomeJogador;
+		 int carta;
+		 int cartaRival;
+		 int numA;
+		 int numB;
+		 int numC;
+		 int numD;
+		 int mao;
+		 int mao2;
+		 char jogador;
+		 bool jogo;
+		 bool jogo2;
+		 bool jogoMaquina;
+		 
+         Console.WriteLine("BEM VINDO AO JOGO BLACK JACK");
+		 Console.WriteLine();
+		 Console.Write("Para começar, digite seu nome: ");
+		 nomeJogador = Console.ReadLine();
+		 Console.WriteLine();
+		 Console.WriteLine("Seja bem vindo " + nomeJogador);
+		 Console.WriteLine("Vamos começar");
+		 Console.WriteLine();
+		 Console.WriteLine("Sua rodada " + nomeJogador + " Pressiona qualquer tecla");
+		 Console.ReadLine();		 
+		 
+		 void maoInicialjogador()
+		 {
+             Random maoInicial = new Random();
+			 numA = 0;
+			 numB = 0;
+			 
+			 while(numA == 0 || numB == 0)
+			 {
+                 numA = maoInicial.Next(1,11);
+				 numB = maoInicial.Next(1,11);
+             }
+			 Console.WriteLine("Sua Mão");
+			 
+			 mao = numA + numB;
+			 
+			 Console.WriteLine(numA + " " + numB);
+			 Console.WriteLine();
+			 
+			 Console.BackgroundColor = ConsoleColor.Blue;
+			 Console.WriteLine("Sua mão total: " + mao);
+			 Console.ResetColor();
+         }
+		 
+		 void maoIncialMaquina()
+		 {
+             Random maoIncialMaquina = new Random();
+			 numC = 0;
+			 numD = 0;
+			 
+			 while(numC == 00 || numD == 0){
+                 numC = maoIncialMaquina.Next(1,11);
+				 numD = maoIncialMaquina.Next(1,11);
+             }
+			 
+			 Console.WriteLine("Mão do Oponente");
+			 
+			 mao2 = numC + numD;
+			 Console.WriteLine(numC + " " + numD);
+			 Console.WriteLine();
+			 Console.BackgroundColor = ConsoleColor.Magenta;
+			 Console.WriteLine("Total mão oponente: " + mao2);
+			 Console.ResetColor();
+			 			 
+         }
+		 
+		 void distribuirCartasJogador()
+		 {
+             
+             carta = 0;
+			 
+			 Random rnd = new Random();
+			 
+			 while(carta==0){
+                 carta = rnd.Next(1,11);
+             }
+			 
+			 Console.WriteLine("Nova Carta: " + carta);
+			 Console.WriteLine();
+			 mao += carta;
+			 
+			 Console.BackgroundColor = ConsoleColor.Blue;
+			 Console.WriteLine("Total de sua mão atualizada: " + mao);
+			 Console.ResetColor();
+		 }
+		 
+		 void distribuirCartasMaquina()
+		 {
+             cartaRival = 0;
+			 Random rnd2 = new Random();
+			 
+			 while(cartaRival == 0){
+                 cartaRival = rnd2.Next(1,11);
+             }
+			 
+			 Console.WriteLine("Nova Carta: " + cartaRival);
+			 Console.WriteLine();
+			 mao2 += cartaRival;
+			 
+			 Console.BackgroundColor = ConsoleColor.Magenta;
+			 Console.WriteLine("Total mão do rival atualizada: " + mao2);
+			 Console.ResetColor();
+		 }
+		 
+		 void verificarDerrotaJogador()
+		 {
+             jogo = false;
+             if(mao > 21){
+                 Console.BackgroundColor = ConsoleColor.Red;
+                 Console.WriteLine("Voce Estorou " + nomeJogador);
+				 Console.ResetColor();
+				 jogo = true;
+				 return;
+             }
+         }
+		 
+		 void verificarDerrotaMaquina()
+		 {
+             jogo2 = false;
+             if(mao2 > 21){
+                 Console.BackgroundColor = ConsoleColor.Red;
+                 Console.WriteLine("Oponente Estorou ");
+				 Console.ResetColor();
+				 jogo2 = true;
+				 return;
+             }
+         }
+		 
+		 void determinarVitoria()
+		 {
+             if(mao > 21 && mao2 > 21)
+			 {
+                 Console.WriteLine("EMPATE OS DOIS ESTOURARAM");
+             }else if(mao == 21){
+                 if(mao == mao2){
+                     Console.WriteLine("EMPATE OS DOIS TEM 21");
+                 }else{
+                     Console.BackgroundColor = ConsoleColor.Blue;
+                     Console.WriteLine("VOCE GANHOU, SÓ VOCE TEM 21");
+					 Console.ResetColor();
+                 }
+			 }else if(mao == mao2){
+                 Console.WriteLine("EMPATE, TOTAIS IGUAIS");
+             }else if(mao < 21 && mao2 > 21){
+                 Console.BackgroundColor = ConsoleColor.Blue;
+                 Console.WriteLine("VOCE GANHOU, SÓ O OPONENTE ESTOUROU");
+				 Console.ResetColor();
+             }else if(mao > mao2 && mao < 21){
+                 Console.BackgroundColor = ConsoleColor.Blue;
+                 Console.WriteLine("VOCE GANHOU, SEU TOTAL ÉMAIOR");
+				 Console.ResetColor();
+             }else{
+                 Console.BackgroundColor = ConsoleColor.Magenta;
+                 Console.WriteLine("RIVAL GANHOU");
+				 Console.ResetColor();
+             }
+         }
+		 
+		 maoInicialjogador();
+		 
+		 Console.WriteLine();
+		 
+		 Console.WriteLine("Quer mais carta?");
+		 
+		 jogador = char.Parse(Console.ReadLine());
+		 
+		 while(jogador == 's' || jogador == 'S'){
+             distribuirCartasJogador();
+			 verificarDerrotaJogador();
+			 if(jogo == true){
+                 break;
+             }
+			 
+			 Console.WriteLine("Quer mais carta?");
+		 
+	    	 jogador = char.Parse(Console.ReadLine());
+         }
+		 Console.WriteLine();
+		 Console.WriteLine("agora sera a vez do Oponente, pressionae qualquer tecla para começar!!");
+		 Console.ReadLine();	 
+		 Console.WriteLine();
+		 Console.WriteLine("Rodada do Oponente");
+		 Console.WriteLine();
+		 
+		 maoIncialMaquina();
+		 while(mao2 < 19){
+			 Console.WriteLine();
+		     Console.WriteLine("aperte qualquer tecla para saber a carta do oponente!");
+		     Console.ReadLine();
+			 distribuirCartasMaquina();
+			 verificarDerrotaMaquina();
+			 if(jogo2 == true){
+                 break;
+             }
+         }
+		 Console.WriteLine();
+		 Console.WriteLine();
+		 Console.WriteLine("Aperte ENTER para continuar!");
+		 Console.ReadLine();
+		 
+		 Console.BackgroundColor = ConsoleColor.Blue;
+		 Console.WriteLine("Sua Mão: " + mao);
+		 Console.ResetColor();
+		 Console.BackgroundColor = ConsoleColor.Magenta;
+		 Console.WriteLine("Mão Rival: " + mao2);
+		 Console.ResetColor();
+		 Console.WriteLine();
+		 determinarVitoria();
+	}
+}
