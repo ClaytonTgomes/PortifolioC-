@@ -1,0 +1,54 @@
+using System;
+
+public static class Program
+{
+	public static void Main()
+	{
+         Random Num = new Random();
+		 int valor;
+		 int chute = 0;
+		 int chance = 9;
+		 
+		 void VerificarVitoria()
+		 {
+             if(chute == valor){
+                 Console.WriteLine("Ganhou !!! ");
+             }else if (chute > valor){
+                 Console.WriteLine("Menos <- <- <-");
+             }else{
+                 Console.WriteLine("Mais -> -> ->");
+             }
+         }
+		 
+		 void VerificarDerrota()
+		 {
+             if(chance == 0){
+                 Console.WriteLine("Perdeu, SEM chances");
+			 }
+         }
+		 
+         Console.WriteLine("Jogo de Advinhar os Números");
+		 Console.WriteLine();
+		 Console.WriteLine("Número sorteado, tente advinhar");
+		 Console.WriteLine("Você tem 10 chances");
+		 valor = Num.Next(200);
+		 
+		 Console.WriteLine();
+		 
+		 while(chute != valor && chance >= 0)
+		 {
+             Console.WriteLine("Qual é o numero de 0 a 200?");
+		     Console.WriteLine();
+	    	 chute = int.Parse(Console.ReadLine());
+                
+             VerificarVitoria();
+			 VerificarDerrota();
+			 Console.WriteLine();
+			 Console.WriteLine("Suas chances: " + chance);
+			 Console.WriteLine();			 
+			 chance--;
+			 Console.WriteLine("-------------------------------------------");
+         }
+		 
+	}
+}
