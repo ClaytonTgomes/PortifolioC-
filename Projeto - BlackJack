@@ -5,219 +5,270 @@ namespace BlackJack;
 
 public static class Program
 {
-	public static void Main()
-	{
-         string nomeJogador;
-		 int carta;
-		 int cartaRival;
-		 int numA;
-		 int numB;
-		 int numC;
-		 int numD;
-		 int mao;
-		 int mao2;
-		 char jogador;
-		 bool jogo;
-		 bool jogo2;
-		 bool jogoMaquina;
-		 
-         Console.WriteLine("BEM VINDO AO JOGO BLACK JACK");
-		 Console.WriteLine();
-		 Console.Write("Para começar, digite seu nome: ");
-		 nomeJogador = Console.ReadLine();
-		 Console.WriteLine();
-		 Console.WriteLine("Seja bem vindo " + nomeJogador);
-		 Console.WriteLine("Vamos começar");
-		 Console.WriteLine();
-		 Console.WriteLine("Sua rodada " + nomeJogador + " Pressiona qualquer tecla");
-		 Console.ReadLine();		 
-		 
-		 void maoInicialjogador()
-		 {
-             Random maoInicial = new Random();
-			 numA = 0;
-			 numB = 0;
-			 
-			 while(numA == 0 || numB == 0)
-			 {
-                 numA = maoInicial.Next(1,11);
-				 numB = maoInicial.Next(1,11);
-             }
-			 Console.WriteLine("Sua Mão");
-			 
-			 mao = numA + numB;
-			 
-			 Console.WriteLine(numA + " " + numB);
-			 Console.WriteLine();
-			 
-			 Console.BackgroundColor = ConsoleColor.Blue;
-			 Console.WriteLine("Sua mão total: " + mao);
-			 Console.ResetColor();
-         }
-		 
-		 void maoIncialMaquina()
-		 {
-             Random maoIncialMaquina = new Random();
-			 numC = 0;
-			 numD = 0;
-			 
-			 while(numC == 00 || numD == 0){
-                 numC = maoIncialMaquina.Next(1,11);
-				 numD = maoIncialMaquina.Next(1,11);
-             }
-			 
-			 Console.WriteLine("Mão do Oponente");
-			 
-			 mao2 = numC + numD;
-			 Console.WriteLine(numC + " " + numD);
-			 Console.WriteLine();
-			 Console.BackgroundColor = ConsoleColor.Magenta;
-			 Console.WriteLine("Total mão oponente: " + mao2);
-			 Console.ResetColor();
-			 			 
-         }
-		 
-		 void distribuirCartasJogador()
-		 {
-             
-             carta = 0;
-			 
-			 Random rnd = new Random();
-			 
-			 while(carta==0){
-                 carta = rnd.Next(1,11);
-             }
-			 
-			 Console.WriteLine("Nova Carta: " + carta);
-			 Console.WriteLine();
-			 mao += carta;
-			 
-			 Console.BackgroundColor = ConsoleColor.Blue;
-			 Console.WriteLine("Total de sua mão atualizada: " + mao);
-			 Console.ResetColor();
-		 }
-		 
-		 void distribuirCartasMaquina()
-		 {
-             cartaRival = 0;
-			 Random rnd2 = new Random();
-			 
-			 while(cartaRival == 0){
-                 cartaRival = rnd2.Next(1,11);
-             }
-			 
-			 Console.WriteLine("Nova Carta: " + cartaRival);
-			 Console.WriteLine();
-			 mao2 += cartaRival;
-			 
-			 Console.BackgroundColor = ConsoleColor.Magenta;
-			 Console.WriteLine("Total mão do rival atualizada: " + mao2);
-			 Console.ResetColor();
-		 }
-		 
-		 void verificarDerrotaJogador()
-		 {
-             jogo = false;
-             if(mao > 21){
-                 Console.BackgroundColor = ConsoleColor.Red;
-                 Console.WriteLine("Voce Estorou " + nomeJogador);
-				 Console.ResetColor();
-				 jogo = true;
-				 return;
-             }
-         }
-		 
-		 void verificarDerrotaMaquina()
-		 {
-             jogo2 = false;
-             if(mao2 > 21){
-                 Console.BackgroundColor = ConsoleColor.Red;
-                 Console.WriteLine("Oponente Estorou ");
-				 Console.ResetColor();
-				 jogo2 = true;
-				 return;
-             }
-         }
-		 
-		 void determinarVitoria()
-		 {
-             if(mao > 21 && mao2 > 21)
-			 {
-                 Console.WriteLine("EMPATE OS DOIS ESTOURARAM");
-             }else if(mao == 21){
-                 if(mao == mao2){
-                     Console.WriteLine("EMPATE OS DOIS TEM 21");
-                 }else{
-                     Console.BackgroundColor = ConsoleColor.Blue;
-                     Console.WriteLine("VOCE GANHOU, SÓ VOCE TEM 21");
-					 Console.ResetColor();
-                 }
-			 }else if(mao == mao2){
-                 Console.WriteLine("EMPATE, TOTAIS IGUAIS");
-             }else if(mao < 21 && mao2 > 21){
-                 Console.BackgroundColor = ConsoleColor.Blue;
-                 Console.WriteLine("VOCE GANHOU, SÓ O OPONENTE ESTOUROU");
-				 Console.ResetColor();
-             }else if(mao > mao2 && mao < 21){
-                 Console.BackgroundColor = ConsoleColor.Blue;
-                 Console.WriteLine("VOCE GANHOU, SEU TOTAL ÉMAIOR");
-				 Console.ResetColor();
-             }else{
-                 Console.BackgroundColor = ConsoleColor.Magenta;
-                 Console.WriteLine("RIVAL GANHOU");
-				 Console.ResetColor();
-             }
-         }
-		 
-		 maoInicialjogador();
-		 
-		 Console.WriteLine();
-		 
-		 Console.WriteLine("Quer mais carta?");
-		 
-		 jogador = char.Parse(Console.ReadLine());
-		 
-		 while(jogador == 's' || jogador == 'S'){
-             distribuirCartasJogador();
-			 verificarDerrotaJogador();
-			 if(jogo == true){
-                 break;
-             }
-			 
-			 Console.WriteLine("Quer mais carta?");
-		 
-	    	 jogador = char.Parse(Console.ReadLine());
-         }
-		 Console.WriteLine();
-		 Console.WriteLine("agora sera a vez do Oponente, pressionae qualquer tecla para começar!!");
-		 Console.ReadLine();	 
-		 Console.WriteLine();
-		 Console.WriteLine("Rodada do Oponente");
-		 Console.WriteLine();
-		 
-		 maoIncialMaquina();
-		 while(mao2 < 19){
-			 Console.WriteLine();
-		     Console.WriteLine("aperte qualquer tecla para saber a carta do oponente!");
-		     Console.ReadLine();
-			 distribuirCartasMaquina();
-			 verificarDerrotaMaquina();
-			 if(jogo2 == true){
-                 break;
-             }
-         }
-		 Console.WriteLine();
-		 Console.WriteLine();
-		 Console.WriteLine("Aperte ENTER para continuar!");
-		 Console.ReadLine();
-		 
-		 Console.BackgroundColor = ConsoleColor.Blue;
-		 Console.WriteLine("Sua Mão: " + mao);
-		 Console.ResetColor();
-		 Console.BackgroundColor = ConsoleColor.Magenta;
-		 Console.WriteLine("Mão Rival: " + mao2);
-		 Console.ResetColor();
-		 Console.WriteLine();
-		 determinarVitoria();
-	}
+    public static void Main()
+    {
+        //Nome da Janela do Console
+        Console.Title = "BlackJack do Clayton";
+
+        //Variaveis acessiveis para o jogo
+        string nomeJogador;
+        int carta;
+        int cartaRival;
+        int numA;
+        int numB;
+        int numC;
+        int numD;
+        int mao;
+        int mao2;
+        char jogador;
+        bool jogo;
+        bool jogo2;
+
+        //Apresentação do Titulo do Jogo
+        Console.WriteLine("\t\t------------------------------------------------------------");
+        Console.WriteLine("\t\t----------------BEM VINDO AO JOGO BLACK JACK----------------");
+        Console.WriteLine("\t\t------------------------------------------------------------");
+        Console.WriteLine();
+        Console.Write("Para começar, digite seu nome: ");
+        nomeJogador = Console.ReadLine();
+        Console.WriteLine();
+        Console.WriteLine("\t\t########################");
+        Console.WriteLine("\t\t  Seja bem vindo " + nomeJogador);
+        Console.WriteLine("\t\t########################");
+        Console.WriteLine("Vamos começar");
+        Console.WriteLine();
+        Console.WriteLine("Sua rodada " + nomeJogador + " Pressiona ENTER para começar o jogo");
+        Console.ReadLine();
+
+        //Metodo para inicializar a mão do Jogador principal que é você
+        void maoInicialjogador()
+        {
+            Random maoInicial = new Random();
+            numA = 0;
+            numB = 0;
+
+            while (numA == 0 || numB == 0)
+            {
+                numA = maoInicial.Next(1, 11);
+                numB = maoInicial.Next(1, 11);
+            }
+            Console.WriteLine("Sua Mão");
+
+            mao = numA + numB;
+
+            Console.WriteLine(numA + " " + numB);
+            Console.WriteLine();
+
+            Console.WriteLine("Sua mão total: " + mao);
+            Console.WriteLine("----------------------------------------------------------------------");
+        }
+
+        //Metodo que inicializa a mão da Maquina
+        void maoIncialMaquina()
+        {
+            Random maoIncialMaquina = new Random();
+            numC = 0;
+            numD = 0;
+
+            while (numC == 00 || numD == 0)
+            {
+                numC = maoIncialMaquina.Next(1, 11);
+                numD = maoIncialMaquina.Next(1, 11);
+            }
+
+            Console.WriteLine("2 Cartas entregues a Máquina");
+
+            mao2 = numC + numD;
+
+            Console.WriteLine("----------------------------------------------------------------------");
+        }
+
+        void distribuirCartasJogador()
+        {
+
+            carta = 0;
+
+            Random rnd = new Random();
+
+            while (carta == 0)
+            {
+                carta = rnd.Next(1, 11);
+            }
+
+            Console.WriteLine("Nova Carta: " + carta);
+            Console.WriteLine();
+            
+            mao += carta;
+
+            Console.WriteLine("Total de sua mão atualizada: " + mao);
+            Console.WriteLine();
+            if (mao == 21) {
+                Console.WriteLine("AAAhhh que perfeito, quero ver ele tirar essa");
+            } else if (mao == 20) {
+                Console.WriteLine("Amigo: Com este total, bem dificil a maquina ganhar");
+            } else if (mao == 19) {
+                Console.WriteLine("Tomara que tenhamos sorte");
+            }
+            else if (mao == 18)
+            {
+                Console.WriteLine("um pouco arriscado, mas você quem decide");
+            }
+            else
+            {
+                return;
+            }
+            Console.WriteLine("----------------------------------------------------------------------");
+        }
+
+        void distribuirCartasMaquina()
+        {
+            cartaRival = 0;
+            Random rnd2 = new Random();
+
+            while (cartaRival == 0)
+            {
+                cartaRival = rnd2.Next(1, 11);
+            }
+
+            Console.WriteLine();
+            mao2 += cartaRival;
+            Console.WriteLine("----------------------------------------------------------------------");
+        }
+
+        void verificarDerrotaJogador()
+        {
+            jogo = false;
+            if (mao > 21)
+            {
+                Console.WriteLine("-----------------------------------------xxxxxxxxx---------------------------------------------");
+                Console.WriteLine("MESA: VOCÊ ESTOUROU");
+                Console.WriteLine("Amigo: Assim não né " + nomeJogador + ", Agora é depender da dele pra empatar o jogo pelo menos");
+                Console.WriteLine("-----------------------------------------xxxxxxxxx---------------------------------------------");
+                jogo = true;
+                return;
+            }
+        }
+
+        void verificarDerrotaMaquina()
+        {
+            jogo2 = false;
+            if (mao2 > 21)
+            {
+                jogo2 = true;
+                return;
+            }
+        }
+
+        void determinarVitoria()
+        {
+            Console.WriteLine("======================================================================");
+            if (mao > 21 && mao2 > 21)
+            {
+                Console.WriteLine("MESA: EMPATE OS DOIS ESTOURARAM");
+                Console.WriteLine();
+                Console.WriteLine("Amigo: Pelo meno conseguimos um empate hahaha");
+            }
+            else if (mao == 21)
+            {
+                if (mao == mao2)
+                {
+                    Console.WriteLine("MESA: EMPATE OS DOIS TEM 21");
+                    Console.WriteLine();
+                    Console.WriteLine("Amigo: Oloco, que diria, não é que ele conseguiu mesmo");
+                }
+                else
+                {
+                    Console.WriteLine("MESA: BOA " + nomeJogador + " VOCÊ GANHOU, SÓ VOCE TEM 21");
+                    Console.WriteLine();
+                    Console.WriteLine("Amigo: Top, jogada perfeita");
+                }
+            }
+            else if (mao == mao2)
+            {
+                Console.WriteLine("MESA: EMPATE, TOTAIS IGUAIS");
+            }
+            else if (mao < 21 && mao2 > 21)
+            {
+                Console.WriteLine("MESA: BOA " + nomeJogador + " VOCÊ GANHOU, SÓ A MAQUINA ESTOUROU");
+                Console.WriteLine();
+                Console.WriteLine("Amigo: Bem feito dela haha. Até que foi fácil essa");
+            }
+            else if (mao2 < 21 && mao > 21)
+            {
+                Console.WriteLine("MESA: POXA " + nomeJogador + "VOCÊ PERDEU PQ ESTOUROU");
+                Console.WriteLine();
+                Console.WriteLine("Amigo: Vaaaiii, te falei que não era pra pedir mais cartas");
+            }
+            else if (mao > mao2 && mao < 21)
+            {
+                Console.WriteLine("MESA: BOA " + nomeJogador + " VOCE GANHOU, SEU TOTAL É MAIOR");
+                Console.WriteLine();
+                Console.WriteLine("Amigo: Ufffa, ainda bem que paramos na melhor opção");
+            }
+            else if (mao2 > mao && mao2 < 21)
+            {
+                Console.WriteLine("MESA: POXA " + nomeJogador + " VOCE PERDEU, O TOTAL DA MAQUINA É MAIOR");
+                Console.WriteLine();
+                Console.WriteLine("Amigo: Por pouco não ganhamos");
+            }
+            else
+            {
+                Console.WriteLine("MESA: POXA " + nomeJogador + " QUE PENA, A MAQUINA GANHOU COM EXATO 21");
+                Console.WriteLine();
+                Console.WriteLine("Amigo: AAAAhhhhhh mentira que ele conseguiu essa");
+            }
+            Console.WriteLine("======================================================================");
+        }
+
+        maoInicialjogador();
+
+        Console.WriteLine("----------------------------------------------------------------------");
+        Console.WriteLine("MESA: Quer mais uma carta?  S ou N");
+        jogador = char.Parse(Console.ReadLine());
+        Console.WriteLine("----------------------------------------------------------------------");
+        while (jogador == 's' || jogador == 'S')
+        {
+            distribuirCartasJogador();
+            verificarDerrotaJogador();
+            if (jogo == true)
+            {
+                break;
+            }
+
+            Console.WriteLine("MESA: Quer mais uma carta?   S ou N");
+            jogador = char.Parse(Console.ReadLine());
+        }
+        Console.WriteLine();
+        Console.WriteLine("> > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >");
+        Console.WriteLine("MESA: Agora é a vez da Maquina, pressionae ENTER para começar!!");
+        Console.ReadLine();
+        Console.WriteLine();
+        Console.WriteLine("MESA: Rodada da Máquina");
+        Console.WriteLine();
+
+        maoIncialMaquina();
+        while (mao2 < 19)
+        {
+            Console.WriteLine();
+            Console.WriteLine("MESA: A Maquina pediu uma nova carta, aperte ENTER para continuar!");
+            Console.ReadLine();
+            distribuirCartasMaquina();
+            verificarDerrotaMaquina();
+            if (jogo2 == true)
+            {
+                break;
+            }
+        }
+        Console.WriteLine();
+        Console.WriteLine();
+        Console.WriteLine("MESA: A Maquina finalizou sua jogada, aperte ENTER para continuar!");
+        Console.ReadLine();
+
+        Console.WriteLine("A mesa pede para mostrar as Cartas");
+        Console.WriteLine("          MESA          ");
+        Console.WriteLine("Sua Mão: " + mao);
+        Console.WriteLine("Mão Rival: " + mao2);
+        Console.WriteLine();
+        determinarVitoria();
+    }
 }
