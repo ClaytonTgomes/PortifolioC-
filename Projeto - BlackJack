@@ -107,14 +107,10 @@ public static class Program
             } else if (mao == 20) {
                 Console.WriteLine("Amigo: Com este total, bem dificil a maquina ganhar");
             } else if (mao == 19) {
-                Console.WriteLine("Tomara que tenhamos sorte");
-            }
-            else if (mao == 18)
-            {
+                Console.WriteLine("Tomara que tenhamos sorte, melhor não pedir mais");
+            }else if (mao == 18){
                 Console.WriteLine("um pouco arriscado, mas você quem decide");
-            }
-            else
-            {
+            }else{
                 return;
             }
             Console.WriteLine("----------------------------------------------------------------------");
@@ -142,7 +138,7 @@ public static class Program
             {
                 Console.WriteLine("-----------------------------------------xxxxxxxxx---------------------------------------------");
                 Console.WriteLine("MESA: VOCÊ ESTOUROU");
-                Console.WriteLine("Amigo: Assim não né " + nomeJogador + ", Agora é depender da dele pra empatar o jogo pelo menos");
+                Console.WriteLine("Amigo: Assim não né " + nomeJogador + ", Agora é depender da máquina pra empatar o jogo pelo menos");
                 Console.WriteLine("-----------------------------------------xxxxxxxxx---------------------------------------------");
                 jogo = true;
                 return;
@@ -178,42 +174,42 @@ public static class Program
                 }
                 else
                 {
-                    Console.WriteLine("MESA: BOA " + nomeJogador + " VOCÊ GANHOU, SÓ VOCE TEM 21");
+                    Console.WriteLine("MESA: VOCÊ GANHOU, SÓ VOCE TEM 21");
                     Console.WriteLine();
                     Console.WriteLine("Amigo: Top, jogada perfeita");
                 }
             }
             else if (mao == mao2)
             {
-                Console.WriteLine("MESA: EMPATE, TOTAIS IGUAIS");
+                Console.WriteLine("MESA: EMPATE, TOTAIS IGUAIS MESMO NÃO ESTOURAREM");
             }
             else if (mao < 21 && mao2 > 21)
             {
-                Console.WriteLine("MESA: BOA " + nomeJogador + " VOCÊ GANHOU, SÓ A MAQUINA ESTOUROU");
+                Console.WriteLine("MESA: VOCÊ GANHOU, SÓ A MAQUINA ESTOUROU E VOCÊ PROXIMO DE 21");
                 Console.WriteLine();
                 Console.WriteLine("Amigo: Bem feito dela haha. Até que foi fácil essa");
             }
             else if (mao2 < 21 && mao > 21)
             {
-                Console.WriteLine("MESA: POXA " + nomeJogador + "VOCÊ PERDEU PQ ESTOUROU");
+                Console.WriteLine("MESA: VOCÊ PERDEU PQ ESTOUROU, E A MAQUINA PROXIMO DE 21");
                 Console.WriteLine();
-                Console.WriteLine("Amigo: Vaaaiii, te falei que não era pra pedir mais cartas");
+                Console.WriteLine("Amigo: Vaaaiii " + nomeJogador +", a máquina foi mais esperta que nós");
             }
             else if (mao > mao2 && mao < 21)
             {
-                Console.WriteLine("MESA: BOA " + nomeJogador + " VOCE GANHOU, SEU TOTAL É MAIOR");
+                Console.WriteLine("MESA: VOCE GANHOU, SEU TOTAL É MAIOR E MENOR QUE 21");
                 Console.WriteLine();
-                Console.WriteLine("Amigo: Ufffa, ainda bem que paramos na melhor opção");
+                Console.WriteLine("Amigo: Ufffa, ainda bem que paramos na melhor opção ein " + nomeJogador);
             }
             else if (mao2 > mao && mao2 < 21)
             {
-                Console.WriteLine("MESA: POXA " + nomeJogador + " VOCE PERDEU, O TOTAL DA MAQUINA É MAIOR");
+                Console.WriteLine("MESA: VOCE PERDEU, O TOTAL DA MAQUINA É MAIOR E MENOR QUE 21");
                 Console.WriteLine();
                 Console.WriteLine("Amigo: Por pouco não ganhamos");
             }
             else
             {
-                Console.WriteLine("MESA: POXA " + nomeJogador + " QUE PENA, A MAQUINA GANHOU COM EXATO 21");
+                Console.WriteLine("MESA: VOCÊ PERDEU, A MAQUINA TEM EXATOS 21");
                 Console.WriteLine();
                 Console.WriteLine("Amigo: AAAAhhhhhh mentira que ele conseguiu essa");
             }
@@ -263,8 +259,9 @@ public static class Program
         Console.WriteLine();
         Console.WriteLine("MESA: A Maquina finalizou sua jogada, aperte ENTER para continuar!");
         Console.ReadLine();
-
+        Console.WriteLine("***********************************************************************");
         Console.WriteLine("A mesa pede para mostrar as Cartas");
+        Console.WriteLine();
         Console.WriteLine("          MESA          ");
         Console.WriteLine("Sua Mão: " + mao);
         Console.WriteLine("Mão Rival: " + mao2);
