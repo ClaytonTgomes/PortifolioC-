@@ -97,20 +97,29 @@ public static class Program
 
             Console.WriteLine("Nova Carta: " + carta);
             Console.WriteLine();
-            
+
             mao += carta;
 
             Console.WriteLine("Total de sua mão atualizada: " + mao);
             Console.WriteLine();
-            if (mao == 21) {
+            if (mao == 21)
+            {
                 Console.WriteLine("AAAhhh que perfeito, quero ver ele tirar essa");
-            } else if (mao == 20) {
+            }
+            else if (mao == 20)
+            {
                 Console.WriteLine("Amigo: Com este total, bem dificil a maquina ganhar");
-            } else if (mao == 19) {
+            }
+            else if (mao == 19)
+            {
                 Console.WriteLine("Tomara que tenhamos sorte, melhor não pedir mais");
-            }else if (mao == 18){
+            }
+            else if (mao == 18)
+            {
                 Console.WriteLine("um pouco arriscado, mas você quem decide");
-            }else{
+            }
+            else
+            {
                 return;
             }
             Console.WriteLine("----------------------------------------------------------------------");
@@ -193,7 +202,7 @@ public static class Program
             {
                 Console.WriteLine("MESA: VOCÊ PERDEU PQ ESTOUROU, E A MAQUINA PROXIMO DE 21");
                 Console.WriteLine();
-                Console.WriteLine("Amigo: Vaaaiii " + nomeJogador +", a máquina foi mais esperta que nós");
+                Console.WriteLine("Amigo: Vaaaiii " + nomeJogador + ", a máquina foi mais esperta que nós");
             }
             else if (mao > mao2 && mao < 21)
             {
@@ -261,10 +270,12 @@ public static class Program
         Console.ReadLine();
         Console.WriteLine("***********************************************************************");
         Console.WriteLine("A mesa pede para mostrar as Cartas");
+        Console.WriteLine("Aperte ENTER para mostrar suas cartas!");
+        Console.ReadLine();
         Console.WriteLine();
-        Console.WriteLine("          MESA          ");
-        Console.WriteLine("Sua Mão: " + mao);
-        Console.WriteLine("Mão Rival: " + mao2);
+        Console.WriteLine("\t          MESA          ");
+        Console.WriteLine("\tSua Mão: " + mao);
+        Console.WriteLine("\tMão Rival: " + mao2);
         Console.WriteLine();
         determinarVitoria();
     }
