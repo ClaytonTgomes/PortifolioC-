@@ -1,0 +1,127 @@
+using System;
+using System.Linq;
+
+namespace JoKenPo;
+
+public static class Program
+{
+	public static void Main()
+	{
+        int jogador, maquina;
+		int pontoJogador = 0;
+		int pontoMaquina = 0;
+		Random jogar = new Random();
+		
+		void MaquinaJoga()
+		{
+            maquina = jogar.Next(1,4);
+			Console.WriteLine(maquina);
+        }
+		
+		void IdentificarJogador()
+		{
+            if(jogador == 1)
+			{
+                Console.WriteLine("jogador escolhe " + jogador + " tesoura");
+            }
+			else if(jogador == 2)
+			{
+                Console.WriteLine("jogador escolheu " + jogador + " papel");
+            }
+			else if(jogador == 3)
+			{
+                Console.WriteLine("Jogador escolheu " + jogador + " pedra");
+            }
+        }
+		
+		void IdentificarMaquina()
+		{
+            if(maquina == 1)
+			{
+                Console.WriteLine("Maquina escolhe " + maquina + " tesoura");
+            }
+			else if(maquina == 2)
+			{
+                Console.WriteLine("maquina escolheu " + maquina + " papel");
+            }
+			else if(maquina == 3)
+			{
+                Console.WriteLine("maquina escolheu " + maquina + " pedra");
+            }
+        }
+		
+		void CondicaoVitora()
+		{
+            //Conidcao Vitoria do Jogador
+            if(jogador == 1 && maquina == 2)
+			{
+                Console.WriteLine("Rodada Jogador, tesoura ganha papel");
+				pontoJogador += 1;
+            }
+			else if(jogador == 2 && maquina == 3)
+			{
+                Console.WriteLine("Rodada Jogador, papel ganha pedra");
+				pontoJogador += 1;
+            }
+			else if(jogador == 3 && maquina == 1)
+			{
+                Console.WriteLine("Rodada Jogador, pedra ganha tesoura");
+				pontoJogador += 1;
+            }
+			//Condicao Vitoria Maquina
+			if(maquina == 1 && jogador == 2)
+			{
+                Console.WriteLine("Rodada Maquina, tesoura ganha papel");
+				pontoMaquina += 1;
+            }
+			else if(maquina == 2 && jogador == 3)
+			{
+                Console.WriteLine("Rodada Maquina, papel ganha pedra");
+				pontoMaquina += 1;
+            }
+			else if(maquina == 3 && jogador == 1)
+			{
+                Console.WriteLine("Rodada Maquina, pedra ganha tesoura");
+				pontoMaquina += 1;
+            }
+			else if(jogador == maquina)
+			{
+                Console.WriteLine("Empate");
+            }
+        }
+		
+	
+		Console.WriteLine("1 - tesoura , 2 - papel, 3 pedra");
+		Console.WriteLine();
+		while(true)
+		{
+            Console.WriteLine("Jogador escolhe sua jogada");
+		    jogador = int.Parse(Console.ReadLine());
+		
+	    	while(jogador > 3 || jogador < 1)
+	    	{
+                 Console.WriteLine("Valor invalido, escolha novamente");
+                 jogador = int.Parse(Console.ReadLine());
+            }
+	    	IdentificarJogador();
+	    	Console.WriteLine();
+	    	MaquinaJoga();	
+	    	IdentificarMaquina();
+	    	Console.WriteLine();
+			CondicaoVitora();
+			Console.WriteLine();
+	    	Console.WriteLine(pontoJogador);
+			Console.WriteLine(pontoMaquina);
+			if(pontoJogador == 3)
+			{
+                Console.WriteLine("Jogador Vence a partida");
+				break;
+            }
+			else if(pontoMaquina == 3)
+			{
+                Console.WriteLine("Maquina Vence a partida");
+				break;
+            }
+        }
+    }
+}
