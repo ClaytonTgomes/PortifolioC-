@@ -8,8 +8,8 @@ public class Carta
     public int Vida { get; set; }
     public int AtkLeve { get; set; }
     public int AtkForte { get; set; }
-	public int CustoAtkL { get; set; }
-	public int CustoAtkF { get; set; }
+    public int CustoAtkL { get; set; }
+    public int CustoAtkF { get; set; }
 
     public Carta(string nome, int vida, int atkLeve, int atkForte, int custoAtkL, int custoAtkF)
     {
@@ -17,8 +17,8 @@ public class Carta
         Vida = vida;
         AtkLeve = atkLeve;
         AtkForte = atkForte;
-		CustoAtkL = custoAtkL;
-		CustoAtkF = custoAtkF;
+        CustoAtkL = custoAtkL;
+        CustoAtkF = custoAtkF;
     }
 }
 
@@ -28,374 +28,405 @@ class Program
     {
         // Criar uma listas de Cartas
         List<Carta> baralho = CriarBaralho();
-		List<Carta> mao = new List<Carta>();
-		List<Carta> campo = new List<Carta>();
-		List<Carta> maoDois = new List<Carta>();
-		List<Carta> campo2 = new List<Carta>();
-		
-		Random dados = new Random();
-		Carta cartaAtual;
-		Carta cartaAtualMaq;
-		
-		int descarte = 0;
-		int custoATK1 = 0; //Valor que receberá da moeda1 jogador
-		int custoATK2 = 0; //Valor que recebera da moeda2 maquina
-		int moeda1 = 0; //Valor que recebera sortido de random jogador
-		int moeda2 = 0; //Valor que receberá sortido de random maquina
-		int custAtkL1;
-		int custAtkF1;
-		int custAtkL2;
-		int custAtkF2;
-		bool situaçãoJogo = true;
-		bool situacaoFase = true;
-		
-		//Embaralhar Lista
-		baralho = Embaralhar(baralho);
-		
-		static List<Carta> Embaralhar(List<Carta> baralho)
-		{
+        List<Carta> mao = new List<Carta>();
+        List<Carta> campo = new List<Carta>();
+        List<Carta> maoDois = new List<Carta>();
+        List<Carta> campo2 = new List<Carta>();
+
+        Random dados = new Random();
+        Carta cartaAtual;
+        Carta cartaAtualMaq;
+
+        int descarte = 0;
+        int custoATK1 = 0; //Valor que receberá da moeda1 jogador
+        int custoATK2 = 0; //Valor que recebera da moeda2 maquina
+        int moeda1 = 0; //Valor que recebera sortido de random jogador
+        int moeda2 = 0; //Valor que receberá sortido de random maquina
+        int custAtkL1;
+        int custAtkF1;
+        int custAtkL2;
+        int custAtkF2;
+        bool situaçãoJogo = true;
+        bool situacaoFase = true;
+
+        //Embaralhar Lista
+        baralho = Embaralhar(baralho);
+
+        static List<Carta> Embaralhar(List<Carta> baralho)
+        {
             Random random = new Random();
-			int n = baralho.Count;
-			while(n > 1)
-			{
-				int k = random.Next(n);
-				n--;
-				Carta carta = baralho[k];
+            int n = baralho.Count;
+            while (n > 1)
+            {
+                int k = random.Next(n);
+                n--;
+                Carta carta = baralho[k];
                 baralho[k] = baralho[n];
                 baralho[n] = carta;
             }
-			return baralho;
+            return baralho;
         }
 
         static List<Carta> CriarBaralho()
-		{
+        {
             List<Carta> baralho = new List<Carta>();
-			//Adicionar as cartas ao baralho
-            baralho.Add(new Carta("Pikachu", 60, 20, 50, 1, 3));
-	    	baralho.Add(new Carta("Charmander", 70, 20, 40, 1, 3));
-	    	baralho.Add(new Carta("Squirtle", 60, 10, 20, 1, 2));
-	    	baralho.Add(new Carta("Bulbasaur", 70, 20, 30, 1, 2));
-			baralho.Add(new Carta("Cartepie", 50, 10, 20, 1, 2));
-			baralho.Add(new Carta("Pidgey", 50, 20, 30, 1, 2));
-			return baralho;
+            //Adicionar as cartas ao baralho
+            baralho.Add(new Carta("Pikachu", 80, 30, 60, 2, 3));
+            baralho.Add(new Carta("Charmander", 70, 20, 40, 1, 3));
+            baralho.Add(new Carta("Squirtle", 60, 10, 30, 1, 2));
+            baralho.Add(new Carta("Bulbasaur", 70, 20, 30, 1, 2));
+            baralho.Add(new Carta("Mew", 180, 40, 70, 2, 4));
+            baralho.Add(new Carta("Onix", 90, 10, 40, 1, 2));
+            baralho.Add(new Carta("Lapras", 190, 100, 160, 5, 7));
+            baralho.Add(new Carta("Arceus", 280, 150, 220, 6, 8));
+            baralho.Add(new Carta("Charizard", 220, 80, 180, 4, 7));
+            baralho.Add(new Carta("Venusaur", 160, 50, 90, 3, 4));
+            baralho.Add(new Carta("Rayquaza", 90, 30, 100, 2, 5));
+            baralho.Add(new Carta("Lugia", 90, 40, 90, 2, 4));
+            baralho.Add(new Carta("Xerneas", 170, 60, 140, 3, 6));
+            baralho.Add(new Carta("Zaptos", 90, 60, 100, 3, 5));
+            baralho.Add(new Carta("Moltres", 120, 30, 90, 2, 4));
+            baralho.Add(new Carta("Articuno", 110, 20, 100, 1, 5));
+            baralho.Add(new Carta("Charmeleon", 90, 30, 100, 2, 5));
+            baralho.Add(new Carta("Ivysaur", 100, 30, 80, 2, 4));
+            baralho.Add(new Carta("Mewtwo", 220, 50, 160, 3, 5));
+            baralho.Add(new Carta("Wartotle", 70, 30, 70, 2, 4));
+            baralho.Add(new Carta("Ho-Oh", 190, 100, 180, 5, 7));
+            baralho.Add(new Carta("Entei", 230, 60, 260, 3, 9));
+
+            return baralho;
         }
-		
-		void Baralho()
-		{
+
+        void Baralho()
+        {
             Console.WriteLine("CARTAS DO BARALHO");
-			Console.WriteLine("N° - Nome = Vida, Atq 1 / Atq 2");
+            Console.WriteLine("N° - Nome = Vida, Atq 1 / Atq 2");
             foreach (Carta deck in baralho)
             {
                 Console.WriteLine($"{deck.Nome} = {deck.Vida} ( {deck.AtkLeve} - {deck.CustoAtkL}  / {deck.AtkForte} - {deck.CustoAtkF} )");
             }
         }
-	
-		// Criar a impressão das cartas na lista mao
-		void Mao()
-		{
-            int i =0;
+
+        // Criar a impressão das cartas na lista mao
+        void Mao()
+        {
+            int i = 0;
             Console.WriteLine("MÃO");
-			Console.WriteLine("N°-> Nome  = ♡ Vida | (♤ AtkL-E / ♤ AtkF-E)");	
+            Console.WriteLine("N°-> Nome  = ♡ Vida | (♤ AtkL-E / ♤ AtkF-E)");
             foreach (Carta carta in mao)
-            {	
+            {
                 Console.WriteLine($"{i} -> {carta.Nome} =  ♡ {carta.Vida} | (♤ {carta.AtkLeve}-{carta.CustoAtkL}  / ♤ {carta.AtkForte}-{carta.CustoAtkF})");
-				i++;
+                i++;
             }
         }
-		
-		void Mao2()
-		{
-            int i =0;
-			Console.WriteLine("MÃO MAQUINA");	
+
+        void Mao2()
+        {
+            int i = 0;
+            Console.WriteLine("MÃO MAQUINA");
             foreach (Carta carta2 in maoDois)
-            {	
+            {
                 Console.WriteLine($"{carta2.Nome} = {carta2.Vida} ( {carta2.AtkLeve} - {carta2.CustoAtkL}  / {carta2.AtkForte} - {carta2.CustoAtkF} )");
-				i++;
+                i++;
             }
         }
-		
-		void RodarDadosJogador()
-		{
-            moeda1 = dados.Next(0,3);
+
+        void RodarDadosJogador()
+        {
+            moeda1 = dados.Next(0, 3);
             Console.WriteLine("Valor energia pego: " + moeda1);
         }
-		
-		void RodarDadosMaquina()
-		{
-            moeda2 = dados.Next(0,3);
+
+        void RodarDadosMaquina()
+        {
+            moeda2 = dados.Next(0, 3);
             Console.WriteLine("Valor energia pego: " + moeda2);
         }
-		
-		void Campo()
-		{
+
+        void Campo()
+        {
             Console.WriteLine("\t\t\t\t\t\t\tCAMPO");
-            Console.WriteLine("=========================================");
-			Console.WriteLine("Quantidade de Energia Jogador: " + custoATK1);
-			Console.WriteLine("\t\t\t\t\t\t\tSeu Pokemon");
-			foreach( Carta jogada1 in campo)
-			{	
-                Console.WriteLine($"\t\t\t{jogada1.Nome} = ♡ {jogada1.Vida} | (♤ {jogada1.AtkLeve}-{jogada1.CustoAtkL}  / ♤ {jogada1.AtkForte}-{jogada1.CustoAtkF})");
+            Console.WriteLine("==================================================================================");
+            Console.WriteLine("Quantidade de Energia Jogador: " + custoATK1);
+            Console.WriteLine("\t\t\t\tSeu Pokemon");
+            foreach (Carta jogada1 in campo)
+            {
+                Console.WriteLine($"\t\t{jogada1.Nome} = ♡ {jogada1.Vida} | (♤ {jogada1.AtkLeve}-{jogada1.CustoAtkL}  / ♤ {jogada1.AtkForte}-{jogada1.CustoAtkF})");
             }
-			Console.WriteLine();
-			Console.WriteLine("                 ------                 ");
-			Console.WriteLine("---------------|   O   |----------------");
-			Console.WriteLine("                 ------                 ");
-			Console.WriteLine();
-			foreach( Carta jogada2 in campo2)
-			{
-                Console.WriteLine($"\t\t\t{jogada2.Nome} = {jogada2.Vida}, ( {jogada2.AtkLeve} - {jogada2.CustoAtkL}  / {jogada2.AtkForte} - {jogada2.CustoAtkF} )");
+            Console.WriteLine();
+            Console.WriteLine("                                ------                                ");
+            Console.WriteLine("------------------------------|   O   |-------------------------------");
+            Console.WriteLine("                                ------                                ");
+            Console.WriteLine();
+            foreach (Carta jogada2 in campo2)
+            {
+                Console.WriteLine($"\t\t{jogada2.Nome} = {jogada2.Vida}, ( {jogada2.AtkLeve} - {jogada2.CustoAtkL}  / {jogada2.AtkForte} - {jogada2.CustoAtkF} )");
             }
-			Console.WriteLine("\t\t\t\t\t\t\tMaquina Pokemon");
-			Console.WriteLine("Quantidade de Energia Maquina: " + custoATK2);
-			Console.WriteLine("=========================================");
+            Console.WriteLine("\t\t\t\tMaquina Pokemon");
+            Console.WriteLine("Quantidade de Energia Maquina: " + custoATK2);
+            Console.WriteLine("==================================================================================");
         }
-		
-		void DistribuirCartas()
-		{
-            for(int i=0;i<3;i++)
-	    	{
+
+        void DistribuirCartas()
+        {
+            for (int i = 0; i < 3; i++)
+            {
                 int posicao = 0;
-	    		mao.Add(baralho[posicao]);
-	    		baralho.RemoveAt(posicao);
+                mao.Add(baralho[posicao]);
+                baralho.RemoveAt(posicao);
             }
-		
-	    	for(int i=0;i<3;i++)
-	    	{
+
+            for (int i = 0; i < 3; i++)
+            {
                 int posicao = 0;
-	    		maoDois.Add(baralho[posicao]);
-	    		baralho.RemoveAt(posicao);
+                maoDois.Add(baralho[posicao]);
+                baralho.RemoveAt(posicao);
             }
         }
-		
-		void VerificarCampo()
-		{
-            if(campo.Count == 0)
-	    	{
+
+        void VerificarCampo()
+        {
+            if (campo.Count == 0)
+            {
                 Mao();
-				Console.WriteLine();
+                Console.WriteLine();
                 Console.WriteLine("Qual carta vai jogar no campo?");
-	    		descarte = int.Parse(Console.ReadLine());
-				campo.Add(mao[descarte]);
-    		    mao.RemoveAt(descarte);
+                descarte = int.Parse(Console.ReadLine());
+                campo.Add(mao[descarte]);
+                mao.RemoveAt(descarte);
             }
-	    	if(campo2.Count == 0)
-	    	{
-				campo2.Add(maoDois[0]);
-	    	    maoDois.RemoveAt(0);
+            if (campo2.Count == 0)
+            {
+                campo2.Add(maoDois[0]);
+                maoDois.RemoveAt(0);
             }
-			
+
         }
-		
-		void VerificarAtaque()
-		{
+
+        void VerificarAtaque()
+        {
             custAtkL1 = cartaAtual.CustoAtkL;
-			custAtkF1 = cartaAtual.CustoAtkF;
-			
-			if(custoATK1 >= custAtkL1)
-			{
+            custAtkF1 = cartaAtual.CustoAtkF;
+
+            if (custoATK1 >= custAtkL1)
+            {
                 Console.WriteLine("Você tem energia para atacar");
-		    	Console.WriteLine("Vai atacar? S ou N");
-				char atacar = char.Parse(Console.ReadLine());
-				while(atacar != 's' && atacar != 'S' && atacar != 'n' && atacar != 'N')
-				{
+                Console.WriteLine("Vai atacar? S ou N");
+                char atacar = char.Parse(Console.ReadLine());
+                while (atacar != 's' && atacar != 'S' && atacar != 'n' && atacar != 'N')
+                {
                     Console.WriteLine("Escolha invalida, tente novamente. S ou N");
-			    	atacar = char.Parse(Console.ReadLine());
+                    atacar = char.Parse(Console.ReadLine());
                 }
-				
-				if(atacar == 's' || atacar == 'S')
-		    	{
+
+                if (atacar == 's' || atacar == 'S')
+                {
                     Console.WriteLine("Ataque leve ou forte? L ou F");
-				    atacar = char.Parse(Console.ReadLine());
-                    if(atacar == 'l' || atacar == 'L')
-			    	{
+                    atacar = char.Parse(Console.ReadLine());
+                    if (atacar == 'l' || atacar == 'L')
+                    {
                         Console.WriteLine();
                         cartaAtualMaq.Vida -= cartaAtual.AtkLeve;
-	    	        	custoATK1 -= custAtkL1;
-		            	Console.WriteLine("Atacou com o Leve!");
+                        custoATK1 -= 1;
+                        Console.WriteLine(cartaAtual.Nome + " Atacou com o Leve o Pokemon " + cartaAtualMaq.Nome);
+                        Console.WriteLine("Dano de ataque foi de " + cartaAtual.AtkLeve + " do pokemon " + cartaAtual.Nome);
+                        Console.WriteLine("Vida atual do Pokemon " + cartaAtualMaq.Nome + " agora é de " + cartaAtualMaq.Vida);
                     }
-	    	    	else if(atacar == 'f' || atacar == 'F')
-			    	{
-                        if(custoATK1 >= custAtkF1)
-						{
+                    else if (atacar == 'f' || atacar == 'F')
+                    {
+                        if (custoATK1 >= custAtkF1)
+                        {
                             Console.WriteLine();
                             cartaAtualMaq.Vida -= cartaAtual.AtkForte;
-	    	            	custoATK1 -= custAtkF1;
-		                	Console.WriteLine("Atacou com o Forte!");
+                            custoATK1 -= 3;
+                            if (custoATK1 < 0)
+                            {
+                                custoATK1 = 0;
+                            }
+                            Console.WriteLine(cartaAtual.Nome + " Atacou com Forte o Pokemon " + cartaAtualMaq.Nome);
+                            Console.WriteLine("Dano de ataque foi de " + cartaAtual.AtkForte + " do pokemon " + cartaAtual.Nome);
+                            Console.WriteLine("Vida atual do Pokemon " + cartaAtualMaq.Nome + " agora é de " + cartaAtualMaq.Vida);
                         }
-						else
-						{
+                        else
+                        {
                             Console.WriteLine("Você nãotem energia Para ataque Forte");
-	                    }
-                        
+                        }
+
                     }
                 }
-				else
-				{
+                else
+                {
                     Console.WriteLine("Não fez o ataque");
                 }
             }
-		}
-		
-		void VerificarAtaqueMaquina()
-		{
+        }
+
+        void VerificarAtaqueMaquina()
+        {
             custAtkL2 = cartaAtualMaq.CustoAtkL;
-			custAtkF2 = cartaAtualMaq.CustoAtkF;
-			
-            if(campo.Count > 0)
-			{
-                if(custoATK2 >= cartaAtualMaq.CustoAtkF)
-		    	{
-                    custoATK2 -= cartaAtualMaq.CustoAtkF;
-		    		cartaAtual.Vida -= cartaAtualMaq.AtkForte;
-					Console.WriteLine("Maquina Atacou com o Forte");
-                }
-                else if(custoATK2 >= cartaAtualMaq.CustoAtkL)
-		    	{
-                    if(cartaAtual.Vida > 29)
-					{
-                        Random maq = new Random();
-				    	int escMaq = maq.Next(2);
-				    	if(escMaq == 1)
-				    	{
-                            custoATK2 -= cartaAtualMaq.CustoAtkL;
-		 	           	cartaAtual.Vida -= cartaAtualMaq.AtkLeve;
-			            	Console.WriteLine("Maquina fez Ataque Leve");
-                        }
-				    	else
-						{
-                            Console.WriteLine("Decidiu não atacar");
-                        }
+            custAtkF2 = cartaAtualMaq.CustoAtkF;
+
+            if (campo.Count > 0)
+            {
+                if (custoATK2 >= cartaAtualMaq.CustoAtkF)
+                {
+                    cartaAtual.Vida -= cartaAtualMaq.AtkForte;
+                    custoATK2 -= 3;
+                    if (custoATK2 < 0)
+                    {
+                        custoATK2 = 0;
                     }
+                    Console.WriteLine(cartaAtualMaq.Nome + " Atacou com o Forte, o Pokemon " + cartaAtual.Nome);
+                    Console.WriteLine("Dano de ataque foi de " + cartaAtualMaq.AtkForte + " do pokemon " + cartaAtualMaq.Nome);
+                    Console.WriteLine("Vida atual do Pokemon " + cartaAtual.Nome + " agora é de " + cartaAtual.Vida);
                 }
-				else
-				{
-                    custoATK2 -= cartaAtualMaq.CustoAtkL;
-					cartaAtual.Vida -= cartaAtualMaq.AtkLeve;
-		        	Console.WriteLine("Maquina fez Ataque Leve");
+                else if (custoATK2 >= cartaAtualMaq.CustoAtkL)
+                {
+                    Random rnd = new Random();
+                    int decidAtacar = rnd.Next(2);
+                    if (decidAtacar == 0)
+                    {
+                        Console.WriteLine("Decidiu não atacar");
+                    }
+                    else
+                    {
+                        cartaAtual.Vida -= cartaAtualMaq.AtkLeve;
+                        custoATK2 -= 1;
+                        Console.WriteLine(cartaAtualMaq.Nome + " Atacou com o Leve, o Pokemon " + cartaAtual.Nome);
+                        Console.WriteLine("Dano de ataque foi de " + cartaAtualMaq.AtkLeve + " do pokemon " + cartaAtualMaq.Nome);
+                        Console.WriteLine("Vida atual do Pokemon " + cartaAtual.Nome + " agora é de " + cartaAtual.Vida);
+                    }
+                    
+                }
+                else
+                {
+                    Console.WriteLine("Não tem Energia suficiente");
                 }
             }
         }
-		
-		void PercaPokemonJogador()
-		{
-            if(cartaAtual.Vida <= 0)
-			{
+
+        void PercaPokemonJogador()
+        {
+            if (cartaAtual.Vida <= 0)
+            {
                 Console.WriteLine("Você Perdeu o Pokemon " + cartaAtual.Nome);
                 campo.RemoveAt(0);
+                custoATK1 = 0;
             }
         }
-		
-		void PercaPokemonMaquina()
-		{
-            
-            if(cartaAtualMaq.Vida <= 0)
-			{
+
+        void PercaPokemonMaquina()
+        {
+
+            if (cartaAtualMaq.Vida <= 0)
+            {
                 Console.WriteLine("Maquina Perdeu o Pokemon " + cartaAtualMaq.Nome);
                 campo2.RemoveAt(0);
+                custoATK2 = 0;
             }
         }
-		
-		void VerificarVitoria()
-		{
-            if(mao.Count == 0 && campo.Count == 0)
-			{
+
+        void VerificarVitoria()
+        {
+            if (mao.Count == 0 && campo.Count == 0)
+            {
                 Console.WriteLine();
                 Console.WriteLine("MAQUINA Ganhou o jogo");
-				situaçãoJogo = false;
+                situaçãoJogo = false;
             }
-			else if (maoDois.Count == 0 && campo2.Count == 0)
-			{
+            else if (maoDois.Count == 0 && campo2.Count == 0)
+            {
                 Console.WriteLine();
                 Console.WriteLine("VOCÊ Ganhou o jogo");
-				situaçãoJogo = false;
+                situaçãoJogo = false;
             }
         }
-		
-		
-		DistribuirCartas();
-	
-		Campo();
-		Console.WriteLine();
-		VerificarCampo();
-		Console.WriteLine("Aperte ENTER para continuar");
-		Console.ReadLine();
-		Console.Clear();
-		
-		//Controle Geral do Jogo
-		while(situaçãoJogo == true)
-		{
+
+
+        DistribuirCartas();
+
+        Campo();
+        Console.WriteLine();
+        VerificarCampo();
+        Console.WriteLine("Aperte ENTER para continuar");
+        Console.ReadLine();
+        Console.Clear();
+
+        //Controle Geral do Jogo
+        while (situaçãoJogo == true)
+        {
             //Turno jogador
             cartaAtual = campo[0];
-			cartaAtualMaq = campo2[0];
-			while(true)
-			{
-                Console.WriteLine("############ Sua Vez #################");
-				RodarDadosJogador();
-				custoATK1 += moeda1;
-				Console.WriteLine();
-				Campo();
-	    	    Mao();
-				Console.WriteLine();
-				VerificarAtaque();
-				PercaPokemonMaquina();
-				Console.WriteLine();
-				Console.WriteLine("xxxxxx.  Campo Atualizado   xxxxxx");
-				Campo();
-				VerificarVitoria();
-		    	if(situaçãoJogo == false)
-		    	{
+            cartaAtualMaq = campo2[0];
+            while (true)
+            {
+                Console.WriteLine("######################## Sua Vez #############################");
+                RodarDadosJogador();
+                custoATK1 += moeda1;
+                Console.WriteLine();
+                Campo();
+                Mao();
+                Console.WriteLine();
+                VerificarAtaque();
+                PercaPokemonMaquina();
+                Console.WriteLine();
+                Console.WriteLine("xxxxxxxxxxxxxxxxxx  Campo Atualizado   xxxxxxxxxxxxxxxxxx");
+                Campo();
+                VerificarVitoria();
+                if (situaçãoJogo == false)
+                {
                     break;
                 }
-				VerificarCampo();
-				situacaoFase = false;
-				if(situacaoFase == false)
-				{
-                    break;
-                }
-            }
-			
-            if(situaçãoJogo == false)
-	    	{
-                break;
-            }	
-	    	Console.WriteLine("Aperte ENTER para passar a vez");
-			Console.ReadLine();
-			Console.Clear();
-			
-			//Turno Maquina
-			while(true)
-			{
-                Console.WriteLine("############ VEZ DA MAQUINA #################");
-				RodarDadosMaquina();
-				custoATK2 += moeda2;
-				Console.WriteLine();
-				Campo();
-				Console.WriteLine();
-				VerificarAtaqueMaquina();
-				PercaPokemonJogador();
-				Console.WriteLine();
-				Console.WriteLine("xxxxxx.  Campo Atualizado   xxxxxx");
-				Campo();
-				VerificarVitoria();
-		    	if(situaçãoJogo == false)
-		    	{
-                    break;
-                }		
-				VerificarCampo();
-				situacaoFase = false;
-				if(situacaoFase == false)
-				{
+                situacaoFase = false;
+                if (situacaoFase == false)
+                {
                     break;
                 }
             }
-					
-			if(situaçãoJogo == false)
-        	{
+
+            if (situaçãoJogo == false)
+            {
                 break;
             }
-			Console.WriteLine("Aperte ENTER para sua vez");
-			Console.ReadLine();
-	    	Console.Clear();
+            Console.WriteLine("Aperte ENTER para passar a vez");
+            Console.ReadLine();
+            VerificarCampo();
+            Console.Clear();
+
+            //Turno Maquina
+            while (true)
+            {
+                Console.WriteLine("######################## VEZ DA MAQUINA #############################");
+                RodarDadosMaquina();
+                custoATK2 += moeda2;
+                Console.WriteLine();
+                Campo();
+                Console.WriteLine();
+                VerificarAtaqueMaquina();
+                PercaPokemonJogador();
+                Console.WriteLine();
+                Console.WriteLine("xxxxxxxxxxxxxxxxxx  Campo Atualizado   xxxxxxxxxxxxxxxxxx");
+                Campo();
+                VerificarVitoria();
+                if (situaçãoJogo == false)
+                {
+                    break;
+                }
+                VerificarCampo();
+                situacaoFase = false;
+                if (situacaoFase == false)
+                {
+                    break;
+                }
+            }
+
+            if (situaçãoJogo == false)
+            {
+                break;
+            }
+            Console.WriteLine("Aperte ENTER para sua vez");
+            Console.ReadLine();
+            Console.Clear();
         }
     }
 }
