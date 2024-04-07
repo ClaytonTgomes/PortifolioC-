@@ -304,9 +304,9 @@ class Program
                     {
                         custoATK2 = 0;
                     }
-                    Console.WriteLine(cartaAtualMaq.Nome + " Atacou com o Forte, o Pokemon " + cartaAtual.Nome);
+                    Console.WriteLine(cartaAtualMaq.Nome + "Fez Ataque Forte no " + cartaAtual.Nome);
                     Console.WriteLine("Dano de ataque foi de " + cartaAtualMaq.AtkForte + " do pokemon " + cartaAtualMaq.Nome);
-                    Console.WriteLine("Vida atual do Pokemon " + cartaAtual.Nome + " agora é de " + cartaAtual.Vida);
+                    Console.WriteLine("Vitalidade atual do Pokemon " + cartaAtual.Nome + " agora é de " + cartaAtual.Vida);
                 }
                 else if (custoATK2 >= cartaAtualMaq.CustoAtkL)
                 {
@@ -324,9 +324,9 @@ class Program
                         {
                             custoATK2 = 0;
                         }
-                        Console.WriteLine(cartaAtualMaq.Nome + " Atacou com o Leve, o Pokemon " + cartaAtual.Nome);
+                        Console.WriteLine(cartaAtualMaq.Nome + "Fez Ataque Leve no " + cartaAtual.Nome);
                         Console.WriteLine("Dano de ataque foi de " + cartaAtualMaq.AtkLeve + " do pokemon " + cartaAtualMaq.Nome);
-                        Console.WriteLine("Vida atual do Pokemon " + cartaAtual.Nome + " agora é de " + cartaAtual.Vida);
+                        Console.WriteLine("Vitalidade atual do Pokemon " + cartaAtual.Nome + " agora é de " + cartaAtual.Vida);
                     }
                 }
                 else
@@ -340,7 +340,7 @@ class Program
         {
             if (cartaAtual.Vida <= 0)
             {
-                Console.WriteLine("Você Perdeu o Pokemon " + cartaAtual.Nome);
+                Console.WriteLine("Seu Pokemon foi nocauteado " + cartaAtual.Nome);
                 descarteJogador.Add(campo[0]);
                 campo.RemoveAt(0);
             }
@@ -351,7 +351,7 @@ class Program
 
             if (cartaAtualMaq.Vida <= 0)
             {
-                Console.WriteLine("Maquina Perdeu o Pokemon " + cartaAtualMaq.Nome);
+                Console.WriteLine("Pokemon nocauteado da Maquina " + cartaAtualMaq.Nome);
                 descarteMaquina.Add(campo2[0]);
                 campo2.RemoveAt(0);
             }
