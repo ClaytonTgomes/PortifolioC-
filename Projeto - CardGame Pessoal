@@ -1,0 +1,176 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace BattleElement;
+
+public class Carta
+{
+    public int Id { get; set; }
+    public string Elemento { get; set; }
+    public int Forca { get; set; }
+    public int Raridade { get; set; }
+    public string Efeito { get; set; }
+
+    public Carta(int id, string elemento, int forca, int raridade, string efeito)
+    {
+        Id = id;
+        Elemento = elemento;
+        Forca = forca;
+        Raridade = raridade;
+		Efeito = efeito;
+    }
+}
+
+public static class Program
+{	
+	public static void Main()
+	{
+        List<Carta> baralho = Criarbaralho();
+		List<Carta> maoJogador = new List<Carta>();
+		List<Carta> maoMaquina = new List<Carta>();
+		List<Carta> campoJogador = new List<Carta>();
+		List<Carta> campoNaquina = new List<Carta>();
+		List<Carta> descarte = new List<Carta>();
+		
+		int invocacao;
+		
+		//Embaralhar Lista
+        baralho = Embaralhar(baralho);
+        static List<Carta> Embaralhar(List<Carta> baralho)
+        {
+            Random random = new Random();
+            int n = baralho.Count;
+            while (n > 1)
+            {
+                int k = random.Next(n);
+                n--;
+                Carta carta = baralho[k];
+                baralho[k] = baralho[n];
+                baralho[n] = carta;
+            }
+            return baralho;
+        }
+		
+		static List<Carta> Criarbaralho()
+		{
+            List<Carta> baralho = new List<Carta>();
+	        //Adicionar as cartas ao baralho
+            baralho.Add(new Carta(1, "Agua", 1, 0, "Saca 1 carta"));
+			baralho.Add(new Carta(1, "Agua", 1, 0, "Saca 1 carta"));
+			baralho.Add(new Carta(1, "Agua", 1, 0, "Saca 1 carta"));
+			baralho.Add(new Carta(1, "Agua", 1, 0, "Saca 1 carta"));
+			baralho.Add(new Carta(1, "Agua", 1, 0, "Saca 1 carta"));
+			baralho.Add(new Carta(1, "Agua", 1, 0, "Saca 1 carta"));
+	    	baralho.Add(new Carta(2, "Fogo", 2, 0, "Diminui 2 PV Rival"));
+			baralho.Add(new Carta(2, "Fogo", 2, 0, "Diminui 2 PV Rival"));
+			baralho.Add(new Carta(2, "Fogo", 2, 0, "Diminui 2 PV Rival"));
+			baralho.Add(new Carta(2, "Fogo", 2, 0, "Diminui 2 PV Rival"));
+			baralho.Add(new Carta(2, "Fogo", 2, 0, "Diminui 2 PV Rival"));
+	    	baralho.Add(new Carta(3, "Terra", 2,0, "-1 de Força Rival"));
+			baralho.Add(new Carta(3, "Terra", 2, 0, "-1 de Força Rival"));
+			baralho.Add(new Carta(3, "Terra", 2, 0, "-1 de Força Rival"));
+			baralho.Add(new Carta(3, "Terra", 2, 0, "-1 de Força Rival"));
+			baralho.Add(new Carta(3, "Terra", 2, 0, "-1 de Força Rival"));
+			baralho.Add(new Carta(3, "Terra", 2, 0, "-1 de Força Rival"));
+	    	baralho.Add(new Carta(4, "Vento", 2, 0, "Aumenta +1 de Atk"));
+			baralho.Add(new Carta(4, "Vento", 2, 0, "Aumenta +1 de Atk"));
+			baralho.Add(new Carta(4, "Vento", 2, 0, "Aumenta +1 de Atk"));
+			baralho.Add(new Carta(4, "Vento", 2, 0, "Aumenta +1 de Atk"));
+	    	baralho.Add(new Carta(5, "Planta", 1, 0, "Aumenta 2 de seu PV"));
+			baralho.Add(new Carta(5, "Planta", 1, 0, "Aumenta 2 de seu PV"));
+			baralho.Add(new Carta(5, "Planta", 1, 0, "Aumenta 2 de seu PV"));
+			baralho.Add(new Carta(5, "Planta", 1, 0, "Aumenta 2 de seu PV"));
+			return baralho;
+        }
+		
+		void Baralho()
+		{	
+            foreach(Carta deck in baralho)
+	        {
+                    Console.WriteLine($"Id -> {deck.Id} = {deck.Elemento} | {deck.Forca} | {deck.Raridade} : {deck.Efeito}");
+            }
+        }
+		
+		void Campo()
+		{
+            Console.WriteLine("\t\t\t\t\t\t\t [CAMPO]");
+            Console.WriteLine("==============================================");
+			Console.WriteLine("*****************  Zona Efeito  **************");
+			Console.WriteLine();
+			Console.WriteLine("•••••••••••••••••  Zona Ataque  ••••••••••••••");
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine("•••••••••••••••••  Zona Ataque  ••••••••••••••");
+			Console.WriteLine();
+			Console.WriteLine("*****************  Zona Efeito  **************");
+			Console.WriteLine("==============================================");
+        }
+		
+		void MaoJogador()
+        {
+            int i = 0;
+            Console.WriteLine("MÃO");
+            Console.WriteLine("N° -> Id=  Element | Força | Custo: Efeito)");
+            foreach(Carta hand1 in maoJogador)
+			{
+                Console.WriteLine($"{i} -> {hand1.Id} = {hand1.Elemento} | {hand1.Forca} | {hand1.Raridade}: {hand1.Efeito})");
+				i++;
+            }
+        }
+		
+		void MaoMaquina()
+        {
+            Console.WriteLine("MÃO MAQUINA");
+            Console.WriteLine("Id=  Elemento | Força | Raridade: Efeito)");
+            foreach (Carta hand2 in maoMaquina)
+            {
+                Console.WriteLine($"{hand2.Id} = {hand2.Elemento} | {hand2.Forca} | {hand2.Raridade}: {hand2.Efeito})");
+            }
+        }
+		
+	    void DistribuirCartasInicial()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                int posicao = 0;
+                maoJogador.Add(baralho[posicao]);
+                baralho.RemoveAt(posicao);
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                Random maoMaq = new Random();
+                int posicao = maoMaq.Next(2);
+                maoMaquina.Add(baralho[posicao]);
+                baralho.RemoveAt(posicao);
+            }
+        }
+		
+		void VerificaInvocaçãoJogador()
+		{
+            Carta cartaInvocada = maoJogador[3];
+			if (cartaInvocada.Raridade == 0)
+			{
+                invocacao = int.Parse(Console.ReadLine());
+				if(invocacao == cartaInvocada.Raridade)
+				{
+                    campoJogador.Add(maoJogador[invocacao]);
+                    maoJogador.RemoveAt(invocacao);
+                }
+            }
+        }
+		
+		//Baralho();
+		Campo();
+		DistribuirCartasInicial();
+		Console.WriteLine();
+		MaoJogador();
+		Console.WriteLine();
+		MaoMaquina();
+		Console.WriteLine();
+		
+		Console.WriteLine("Qual carta vai jogar em campo?");
+		VerificaInvocaçãoJogador();
+    }
+}
